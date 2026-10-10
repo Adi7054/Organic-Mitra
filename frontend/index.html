@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="te" data-lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OrganicMitra – సేంద్రీయ మిత్ర</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="OrganicMitra">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--leaf)"/><path d="M16 26V15M16 15c0-5 3-8 8-8 0 5-3 8-8 8ZM16 18c0-4-2-6-7-6 0 4 2 6 7 6Z" stroke="var(--on-leaf)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>OrganicMitra</span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#why"><span class="en">Why organic</span><span class="te">ఎందుకు సేంద్రీయం</span></a>
+      <a href="#advisor"><span class="en">Crop advisor</span><span class="te">పంట సలహా</span></a>
+      <a href="#plan"><span class="en">Crop plan</span><span class="te">పంట ప్రణాళిక</span></a>
+      <a href="#inputs"><span class="en">Organic inputs</span><span class="te">సేంద్రీయ ఎరువులు</span></a>
+      <a href="#doctor"><span class="en">Pest doctor</span><span class="te">పురుగు/తెగులు</span></a>
+      <a href="#photo"><span class="en">Photo check</span><span class="te">ఫోటో పరీక్ష</span></a>
+      <a href="#diary"><span class="en">Farm diary</span><span class="te">పొలం డైరీ</span></a>
+      <a href="#savings"><span class="en">Savings</span><span class="te">ఖర్చు ఆదా</span></a>
+      <a href="#ask"><span class="en">Ask Mitra</span><span class="te">మిత్రను అడగండి</span></a>
+    </nav>
+    <div class="langseg" role="group" aria-label="Language / భాష"><button type="button" data-l="te" aria-pressed="true">తెలుగు</button><button type="button" data-l="en" aria-pressed="false">English</button></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <h1><span class="en">Grow without chemicals.</span><span class="te">రసాయనాలు లేకుండా పండించండి.</span></h1>
+      <p class="sub"><span class="en">Know which crop to grow, what to do each day, and what to spray — in your language.</span><span class="te">ఏ పంట వేయాలో, ప్రతి రోజు ఏం చేయాలో, ఏం పిచికారీ చేయాలో — మీ భాషలో తెలుసుకోండి.</span></p>
+      <div class="btns">
+        <a class="btn" href="#start"><span class="en">Find my crop</span><span class="te">నా పంట కనుగొనండి</span></a>
+        <button class="btn ghost" type="button" id="heroListen">🔊 <span class="en">Listen</span><span class="te">వినండి</span></button>
+        <a class="btn ghost" href="#ask"><span class="en">Ask Mitra</span><span class="te">మిత్రను అడగండి</span></a>
+      </div>
+    </div>
+    <div class="stage3d" id="heroStage">
+      <canvas id="heroCanvas" aria-label="3D farm field where crops grow from seed to harvest" role="img"></canvas>
+      <div class="live"><span class="pill" id="heroCap"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="start" style="padding-top:44px">
+  <div class="wrap">
+    <div class="panel wiz">
+      <div class="wsteps" id="wSteps">
+        <button type="button" data-s="1"><i>1</i><span class="en">District</span><span class="te">జిల్లా</span></button>
+        <button type="button" data-s="2"><i>2</i><span class="en">Crop</span><span class="te">పంట</span></button>
+        <button type="button" data-s="3"><i>3</i><span class="en">Plan</span><span class="te">ప్రణాళిక</span></button>
+      </div>
+      <div class="wpane" id="wp1">
+        <h3><span class="en">Where is your farm?</span><span class="te">మీ పొలం ఎక్కడ ఉంది?</span></h3>
+        <p class="note" style="margin:0"><span class="en">We use this to show the crops grown most in your area.</span><span class="te">మీ ప్రాంతంలో ఎక్కువగా వేసే పంటలను చూపించడానికి ఇది వాడతాం.</span></p>
+        <div class="wfields">
+          <div class="field"><label for="wState"><span class="en">State</span><span class="te">రాష్ట్రం</span></label><select id="wState"></select></div>
+          <div class="field"><label for="wDist"><span class="en">District</span><span class="te">జిల్లా</span></label><select id="wDist"></select></div>
+        </div>
+        <div class="row"><button class="btn" id="wNext1" type="button"><span class="en">Next: choose crop</span><span class="te">తర్వాత: పంట ఎంచుకోండి</span></button></div>
+      </div>
+      <div class="wpane" id="wp2" hidden>
+        <h3><span class="en">Which crop do you want to grow?</span><span class="te">ఏ పంట వేయాలనుకుంటున్నారు?</span></h3>
+        <div class="ctrl" style="margin-top:10px"><label class="t"><span class="en">Season</span><span class="te">సీజన్</span></label><div class="seg" id="wSeason" role="radiogroup"></div></div>
+        <div class="wgrid" id="wCrops"></div>
+        <div class="row"><button class="btn ghost sm" id="wBack2" type="button"><span class="en">Back</span><span class="te">వెనుకకు</span></button><a class="btn ghost sm" href="#advisor"><span class="en">More options (soil, water)</span><span class="te">మరిన్ని ఎంపికలు (నేల, నీరు)</span></a></div>
+      </div>
+      <div class="wpane" id="wp3" hidden>
+        <h3><span class="en">Your crop is ready</span><span class="te">మీ పంట సిద్ధం</span></h3>
+        <div id="wSummary"></div>
+        <div class="row">
+          <a class="btn" href="#plan" id="wOpen"><span class="en">Open my day-by-day plan</span><span class="te">రోజువారీ ప్రణాళిక చూడండి</span></a>
+          <button class="btn ghost" id="wAsk" type="button"><span class="en">Ask Mitra about this crop</span><span class="te">ఈ పంట గురించి మిత్రను అడగండి</span></button>
+          <button class="btn ghost sm" id="wBack3" type="button"><span class="en">Back</span><span class="te">వెనుకకు</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <div style="display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap">
+      <h2><span class="en">Why organic? Look under the soil.</span><span class="te">ఎందుకు సేంద్రీయం? నేల లోపల చూడండి.</span></h2>
+      <button class="spk" type="button" aria-label="Read aloud" data-en="Organic soil gets richer every year: more earthworms, deeper roots, and soil that holds more water. Soil fed only with chemical fertilizer can slowly lose life and form a hard crust." data-te="సేంద్రీయ నేల ప్రతి సంవత్సరం బలపడుతుంది: ఎక్కువ వానపాములు, లోతైన వేర్లు, ఎక్కువ నీటిని పట్టుకునే నేల. కేవలం రసాయన ఎరువులతో నేల నెమ్మదిగా జీవం కోల్పోయి గట్టి పొర కట్టవచ్చు.">🔊</button>
+    </div>
+    <p class="lede"><span class="en">Slide through five years and watch both soils change.</span><span class="te">ఐదు సంవత్సరాల్లో రెండు నేలలు ఎలా మారతాయో స్లైడర్ లాగి చూడండి.</span></p>
+    <div class="panel" style="margin-top:26px">
+      <div class="stage3d soilstage" id="soilStage"><canvas id="soilCanvas" aria-label="3D cutaway comparing chemical-only soil and organic soil over five years" role="img"></canvas></div>
+      <div class="soil-labels"><div class="c"><span class="en">Chemical-only soil</span><span class="te">రసాయన ఎరువుల నేల</span></div><div class="o"><span class="en">Organic soil</span><span class="te">సేంద్రీయ నేల</span></div></div>
+      <div class="slider-row">
+        <button class="round" id="soilPlay" type="button" aria-label="Play years">▶</button>
+        <input type="range" id="soilSlider" min="0" max="100" value="0" aria-label="Years">
+      </div>
+      <div class="caption" id="soilYear"></div>
+      <div class="cmp">
+        <div class="c"><b><span class="en">Soil life:</span><span class="te">నేల జీవం:</span></b> <span class="en">can slowly decline when only synthetic fertilizer is used.</span><span class="te">కేవలం రసాయన ఎరువులే వాడితే నెమ్మదిగా తగ్గిపోవచ్చు.</span></div>
+        <div class="o"><b><span class="en">Soil life:</span><span class="te">నేల జీవం:</span></b> <span class="en">worms and microbes multiply when you feed the soil.</span><span class="te">నేలకు సేంద్రీయ ఆహారం ఇస్తే వానపాములు, సూక్ష్మజీవులు పెరుగుతాయి.</span></div>
+        <div class="c"><b><span class="en">Roots:</span><span class="te">వేర్లు:</span></b> <span class="en">tend to stay shallow in hard, crusted soil.</span><span class="te">గట్టిపడిన, పొర కట్టిన నేలలో పైపైనే ఉండిపోతాయి.</span></div>
+        <div class="o"><b><span class="en">Roots:</span><span class="te">వేర్లు:</span></b> <span class="en">go deeper through crumbly soil.</span><span class="te">గుల్ల నేలలో లోతుగా వెళ్తాయి.</span></div>
+        <div class="c"><b><span class="en">Water:</span><span class="te">నీరు:</span></b> <span class="en">runs off a crusted surface.</span><span class="te">గట్టి పొర మీద నుంచి కొట్టుకుపోతుంది.</span></div>
+        <div class="o"><b><span class="en">Water:</span><span class="te">నీరు:</span></b> <span class="en">crumbly, humus-rich soil holds more.</span><span class="te">గుల్లగా, హ్యూమస్ ఉన్న నేల ఎక్కువ నీటిని పట్టుకుంటుంది.</span></div>
+        <div class="c"><b><span class="en">Cost:</span><span class="te">ఖర్చు:</span></b> <span class="en">fertilizer is bought again every season.</span><span class="te">ప్రతి సీజన్‌లో ఎరువులు కొనాలి.</span></div>
+        <div class="o"><b><span class="en">Cost:</span><span class="te">ఖర్చు:</span></b> <span class="en">inputs are made on the farm (Jeevamrutham, compost).</span><span class="te">ఎరువులు పొలంలోనే తయారు చేసుకోవచ్చు (జీవామృతం, కంపోస్టు).</span></div>
+      </div>
+      <p class="note"><span class="en">An illustration of typical long-term trends, not measured data. Real results depend on your soil, crop and management.</span><span class="te">సాధారణ దీర్ఘకాల ధోరణులను చూపే చిత్రం మాత్రమే, కొలిచిన గణాంకాలు కావు. అసలు ఫలితాలు మీ నేల, పంట, నిర్వహణపై ఆధారపడతాయి.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="advisor">
+  <div class="wrap">
+    <h2><span class="en">Which crop suits your land?</span><span class="te">మీ భూమికి ఏ పంట సరిపోతుంది?</span></h2>
+    <p class="lede"><span class="en">Choose your season, soil and water. We rank organic-friendly crops for you.</span><span class="te">సీజన్, నేల, నీటి సౌకర్యం ఎంచుకోండి. మీకు సరిపోయే పంటలను వరుసగా చూపిస్తాం.</span></p>
+    <div class="row" style="margin-top:24px">
+      <div class="field"><label for="selState"><span class="en">State</span><span class="te">రాష్ట్రం</span></label><select id="selState"></select></div>
+      <div class="field"><label for="selDist"><span class="en">District</span><span class="te">జిల్లా</span></label><select id="selDist"></select></div>
+    </div>
+    <p class="note" id="distNote" style="margin:10px 0 0"></p>
+    <div class="panel ctrl-grid">
+      <div class="ctrl"><label class="t"><span class="en">Season</span><span class="te">సీజన్</span></label><div class="seg" id="segSeason" role="radiogroup"></div></div>
+      <div class="ctrl"><label class="t"><span class="en">Soil</span><span class="te">నేల</span></label><div class="seg" id="segSoil" role="radiogroup"></div></div>
+      <div class="ctrl"><label class="t"><span class="en">Water</span><span class="te">నీరు</span></label><div class="seg" id="segWater" role="radiogroup"></div></div>
+    </div>
+    <div class="chips" id="localCrops" style="margin-top:20px"></div>
+    <div class="row" style="margin-top:14px"><div class="field"><label for="allCrops"><span class="en">Or pick any crop (e.g. paddy)</span><span class="te">లేదా ఏ పంటనైనా ఎంచుకోండి (ఉదా: వరి)</span></label><select id="allCrops"></select></div></div>
+    <div class="results" id="results"></div>
+  </div>
+</section>
+
+<section class="sec" id="plan">
+  <div class="wrap">
+    <div class="plan-head">
+      <div>
+        <h2><span class="en">Your day-by-day crop plan</span><span class="te">రోజువారీ పంట ప్రణాళిక</span></h2>
+        <p class="lede"><span class="en">Drag the slider to watch the crop grow and see what to do at each stage.</span><span class="te">స్లైడర్ లాగితే పంట పెరగడం చూడవచ్చు, ప్రతి దశలో చేయాల్సిన పని తెలుస్తుంది.</span></p>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:26px" id="planPanel">
+      <div class="plan-head">
+        <div>
+          <h3 id="planTitle"></h3>
+          <div class="chips" id="planChips"></div>
+        </div>
+        <div class="row" style="margin:0">
+          <div class="field"><label for="sowDate"><span class="en">Sowing date</span><span class="te">విత్తే తేదీ</span></label><input type="date" id="sowDate"></div>
+          <button class="btn sm" id="icsBtn" type="button"><span class="en">Download plan</span><span class="te">ప్రణాళిక డౌన్‌లోడ్</span></button>
+        </div>
+      </div>
+      <div class="plan-grid">
+        <div class="viewer">
+          <div class="stage3d" id="viewStage"><canvas id="viewCanvas" aria-label="3D crop growth viewer" role="img"></canvas></div>
+          <div class="slider-row">
+            <button class="round" id="playBtn" type="button" aria-label="Play growth">▶</button>
+            <input type="range" id="daySlider" min="0" max="100" value="45" aria-label="Crop age in days">
+          </div>
+          <div class="caption" id="viewCap"></div>
+          <div class="row" style="margin-top:8px;align-items:center"><button class="btn ghost sm" id="logStage" type="button">📓 <span class="en">Log this stage in my diary</span><span class="te">ఈ దశను నా డైరీలో నమోదు చేయండి</span></button><span class="note" id="logMsg" style="margin:0" aria-live="polite"></span></div>
+          <div class="tip" id="planTip"></div>
+        </div>
+        <ol class="tl" id="timeline"></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="inputs">
+  <div class="wrap">
+    <h2><span class="en">Make your own organic inputs</span><span class="te">మీ సొంత సేంద్రీయ ఎరువులు తయారు చేసుకోండి</span></h2>
+    <p class="lede"><span class="en">Change the quantity and every ingredient updates.</span><span class="te">పరిమాణం మార్చండి, అన్ని సరుకుల కొలతలు మారతాయి.</span></p>
+    <div class="recipes" id="recipes"></div>
+    <p class="note"><span class="en">Traditional natural-farming recipes; quantities vary by region. Test on a small plot first and confirm with your local natural-farming team or KVK.</span><span class="te">ఇవి సంప్రదాయ ప్రకృతి వ్యవసాయ పద్ధతులు; ప్రాంతాన్ని బట్టి కొలతలు మారవచ్చు. ముందు చిన్న భాగంలో ప్రయత్నించి, మీ ప్రాంత ప్రకృతి వ్యవసాయ బృందం/KVK సలహా తీసుకోండి.</span></p>
+  </div>
+</section>
+
+<section class="sec" id="doctor">
+  <div class="wrap">
+    <h2><span class="en">What is wrong with my plant?</span><span class="te">నా మొక్కకు ఏమైంది?</span></h2>
+    <p class="lede"><span class="en">Tap what you see. Get an organic remedy, no chemical spray.</span><span class="te">మీరు చూసేది ఎంచుకోండి. రసాయనం లేని సేంద్రీయ పరిష్కారం పొందండి.</span></p>
+    <div class="symp" id="symp"></div>
+    <div class="panel diag" id="diag" hidden></div>
+  </div>
+</section>
+
+<section class="sec" id="photo">
+  <div class="wrap">
+    <h2><span class="en">What does my plant photo show?</span><span class="te">నా మొక్క ఫోటో ఏం చెబుతోంది?</span></h2>
+    <p class="lede"><span class="en">Upload or take a photo of the affected leaf, fruit or stem. Mitra tells you the likely problem and what to do, organically.</span><span class="te">సమస్య ఉన్న ఆకు, కాయ లేదా కాండం ఫోటోను అప్‌లోడ్ చేయండి లేదా తీయండి. ఏ సమస్య కావచ్చో, సేంద్రీయంగా ఏం చేయాలో మిత్ర చెబుతుంది.</span></p>
+    <div class="panel photo-grid" style="margin-top:26px">
+      <div>
+        <input type="file" id="photoFile" class="sr" accept="image/*">
+        <label class="drop" id="drop" for="photoFile">
+          <img id="photoPrev" alt="Your plant photo" hidden>
+          <span id="dropHint">📷 <span class="en">Tap to take or choose a photo, or drop it here</span><span class="te">ఫోటో తీయడానికి లేదా ఎంచుకోవడానికి నొక్కండి, లేదా ఇక్కడ వదలండి</span></span>
+        </label>
+      </div>
+      <div>
+        <div class="field"><label for="photoCrop"><span class="en">Crop (if you know)</span><span class="te">పంట (తెలిస్తే)</span></label><select id="photoCrop" style="width:100%"></select></div>
+        <div class="field" style="margin-top:14px"><label for="photoNote"><span class="en">What have you noticed? (optional)</span><span class="te">మీరు గమనించింది (ఐచ్ఛికం)</span></label><input type="text" id="photoNote" style="width:100%"></div>
+        <p class="note"><span class="en">For a good result: daylight, close-up of the affected leaf, the underside of the leaf too, and one healthy leaf to compare.</span><span class="te">మంచి ఫలితం కోసం: పగటి వెలుతురులో, సమస్య ఉన్న ఆకును దగ్గరగా, ఆకు అడుగు భాగం కూడా, పోల్చడానికి ఒక ఆరోగ్యమైన ఆకు కూడా తీయండి.</span></p>
+        <div class="row">
+          <button class="btn" id="photoGo" type="button" disabled><span class="en">Check my plant</span><span class="te">ఫోటో పరీక్షించు</span></button>
+          <button class="btn ghost" id="photoStop" type="button" hidden><span class="en">Stop</span><span class="te">ఆపు</span></button>
+        </div>
+        <p class="note" id="photoMsg" aria-live="polite"></p>
+        <p class="note"><span class="en">The photo is sent to Claude only when you tap Check, using your Claude account.</span><span class="te">మీరు "పరీక్షించు" నొక్కినప్పుడు మాత్రమే ఫోటో మీ Claude ఖాతా ద్వారా Claudeకు వెళ్తుంది.</span></p>
+      </div>
+    </div>
+    <div class="panel photo-out" id="photoOut" hidden aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="sec" id="diary">
+  <div class="wrap">
+    <h2><span class="en">My farm diary</span><span class="te">నా పొలం డైరీ</span></h2>
+    <p class="lede"><span class="en">Write down what you did and what you spent. Entries stay on this phone or browser, so you can come back any day.</span><span class="te">మీరు చేసిన పనులు, పెట్టిన ఖర్చు రాసుకోండి. నమోదులు ఈ ఫోన్/బ్రౌజర్‌లోనే ఉంటాయి, ఎప్పుడైనా తిరిగి చూడవచ్చు.</span></p>
+    <div class="panel" style="margin-top:26px">
+      <div class="diary-form">
+        <div class="field"><label for="dDate"><span class="en">Date</span><span class="te">తేదీ</span></label><input type="date" id="dDate"></div>
+        <div class="field"><label for="diaryCrop"><span class="en">Crop</span><span class="te">పంట</span></label><select id="diaryCrop"></select></div>
+        <div class="field"><label for="dType"><span class="en">What did you do?</span><span class="te">ఏం చేశారు?</span></label><select id="dType"></select></div>
+        <div class="field"><label for="dAmt"><span class="en">Cost ₹ (optional)</span><span class="te">ఖర్చు ₹ (ఐచ్ఛికం)</span></label><input type="number" id="dAmt" min="0" step="50"></div>
+        <div class="field wide"><label for="dNote"><span class="en">Note (optional)</span><span class="te">గమనిక (ఐచ్ఛికం)</span></label><input type="text" id="dNote"></div>
+      </div>
+      <div class="row">
+        <button class="btn" id="dSave" type="button"><span class="en">Save entry</span><span class="te">నమోదు చేయండి</span></button>
+        <span class="note" id="diaryMsg" style="margin:0" aria-live="polite"></span>
+      </div>
+    </div>
+    <p class="note" id="diarySum" style="font-weight:600;color:var(--ink)"></p>
+    <ul class="dlist" id="diaryList"></ul>
+    <div class="row">
+      <button class="btn ghost sm" id="dCsv" type="button"><span class="en">Download diary (CSV)</span><span class="te">డైరీ డౌన్‌లోడ్ (CSV)</span></button>
+      <button class="btn ghost sm" id="dClear" type="button"><span class="en">Clear all</span><span class="te">అన్నీ తొలగించు</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="savings">
+  <div class="wrap">
+    <h2><span class="en">How much can you save?</span><span class="te">ఎంత ఖర్చు ఆదా అవుతుంది?</span></h2>
+    <p class="lede"><span class="en">Enter your own numbers. The organic cost percentage is an assumption you can change.</span><span class="te">మీ సొంత లెక్కలు ఇవ్వండి. సేంద్రీయ ఖర్చు శాతం ఒక అంచనా మాత్రమే, మీరు మార్చవచ్చు.</span></p>
+    <div class="sav-grid">
+      <div class="panel">
+        <div class="row" style="margin-top:0">
+          <div class="field"><label for="acres"><span class="en">Acres</span><span class="te">ఎకరాలు</span></label><input type="number" id="acres" min="0.5" step="0.5" value="3"></div>
+          <div class="field"><label for="spend"><span class="en">Chemical spend per acre per season (₹)</span><span class="te">ఎకరాకు సీజన్‌కు రసాయన ఖర్చు (₹)</span></label><input type="number" id="spend" min="0" step="500" value="8000"></div>
+        </div>
+        <div class="field" style="margin-top:18px"><label for="pct"><span class="en">Organic input cost as % of chemical cost:</span><span class="te">సేంద్రీయ ఖర్చు (రసాయన ఖర్చులో శాతం):</span> <b id="pctVal">35%</b></label>
+          <input type="range" id="pct" min="10" max="80" value="35" style="width:100%;accent-color:var(--leaf)"></div>
+        <div class="field" style="margin-top:14px"><label for="seasons"><span class="en">Seasons per year</span><span class="te">సంవత్సరానికి సీజన్లు</span></label><select id="seasons"><option>1</option><option selected>2</option><option>3</option></select></div>
+        <p class="note"><span class="en">Yields can dip in the first 1–2 seasons while soil life recovers. Certified-organic price premiums are not included.</span><span class="te">నేలలో జీవం కోలుకునే మొదటి 1–2 సీజన్లలో దిగుబడి కొద్దిగా తగ్గవచ్చు. సేంద్రీయ ధృవీకరణ ధర ప్రయోజనం ఇందులో లేదు.</span></p>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div class="big" id="saveBig"></div><button class="spk" id="saveSpk" type="button" aria-label="Read aloud">🔊</button></div>
+        <p style="color:var(--muted);margin-bottom:18px"><span class="en">saved per year (estimate)</span><span class="te">సంవత్సరానికి ఆదా (అంచనా)</span></p>
+        <div class="bars" id="bars"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ask">
+  <div class="wrap">
+    <h2><span class="en">Ask Mitra, your farming assistant</span><span class="te">మిత్రను అడగండి – మీ వ్యవసాయ సహాయకుడు</span></h2>
+    <p class="lede"><span class="en">Type or speak in Telugu or English. Mitra only suggests organic solutions.</span><span class="te">తెలుగులో లేదా ఇంగ్లీషులో టైప్ చేయండి, మాట్లాడండి. మిత్ర సేంద్రీయ పరిష్కారాలే సూచిస్తుంది.</span></p>
+    <div class="panel chat">
+      <div class="chat-top">
+        <div class="who"><span class="dot"></span> Mitra</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="toggle" id="speakTog" type="button" aria-pressed="false">🔊 <span class="en">Read answers aloud</span><span class="te">జవాబు వినిపించు</span></button>
+          <button class="toggle" id="clearBtn" type="button"><span class="en">New chat</span><span class="te">కొత్త చాట్</span></button>
+        </div>
+      </div>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
+      <div>
+        <div class="sugg" id="sugg"></div>
+        <form class="composer" id="chatForm" onsubmit="return false">
+          <button class="mic" id="micBtn" type="button" aria-label="Speak">🎤</button>
+          <input id="chatInput" type="text" autocomplete="off" aria-label="Your question">
+          <button class="btn" id="sendBtn" type="submit"><span class="en">Send</span><span class="te">పంపండి</span></button>
+          <button class="btn ghost" id="stopBtn" type="button" hidden><span class="en">Stop</span><span class="te">ఆపు</span></button>
+        </form>
+      </div>
+    </div>
+    <p class="status" id="chatStatus"><span class="en">Answers are written by Claude using your Claude account. Always check serious crop problems with your local KVK.</span><span class="te">జవాబులు మీ Claude ఖాతా ద్వారా Claude రాస్తుంది. తీవ్రమైన పంట సమస్యలను మీ స్థానిక KVKతో సరిచూసుకోండి.</span></p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2><span class="en">Where this goes next</span><span class="te">తర్వాత ఏమి చేస్తాం</span></h2>
+    <div class="road">
+      <div><b><span class="en">Weather alerts</span><span class="te">వాతావరణ హెచ్చరికలు</span></b><span class="en">Rain-aware spray and sowing reminders.</span><span class="te">వర్షాన్ని బట్టి పిచికారీ, విత్తనాల రిమైండర్లు.</span></div>
+      <div><b><span class="en">Photo diagnosis</span><span class="te">ఫోటోతో నిర్ధారణ</span></b><span class="en">Snap a leaf, get the likely problem.</span><span class="te">ఆకు ఫోటో తీస్తే సమస్య చెబుతుంది.</span></div>
+      <div><b><span class="en">WhatsApp bot</span><span class="te">వాట్సాప్ బాట్</span></b><span class="en">Reach farmers where they already chat.</span><span class="te">రైతులు ఇప్పటికే వాడే చోటే సేవ.</span></div>
+      <div><b><span class="en">Mandi prices</span><span class="te">మార్కెట్ ధరలు</span></b><span class="en">Best time and place to sell.</span><span class="te">అమ్మడానికి మంచి సమయం, చోటు.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<nav class="tabbar" id="tabbar" aria-label="Main">
+  <a href="#top" data-t="home"><i aria-hidden="true">🏠</i><span class="en">Home</span><span class="te">హోమ్</span></a>
+  <a href="#start" data-t="crop"><i aria-hidden="true">🌾</i><span class="en">Crop</span><span class="te">పంట</span></a>
+  <a href="#plan" data-t="plan"><i aria-hidden="true">📅</i><span class="en">Plan</span><span class="te">ప్రణాళిక</span></a>
+  <a href="#doctor" data-t="doc"><i aria-hidden="true">🩺</i><span class="en">Problem</span><span class="te">సమస్య</span></a>
+  <a href="#ask" data-t="ask"><i aria-hidden="true">💬</i><span class="en">Mitra</span><span class="te">మిత్ర</span></a>
+</nav>
+<a class="btn fab" href="#ask" aria-label="Ask Mitra">💬 <span class="en">Ask Mitra</span><span class="te">మిత్ర</span></a>
+
+<footer>
+  <div class="wrap">
+    <span class="en">Kisan Call Centre (free): 1800-180-1551. Advice here is general guidance and does not replace your local agriculture officer or KVK.</span>
+    <span class="te">కిసాన్ కాల్ సెంటర్ (ఉచితం): 1800-180-1551. ఇక్కడి సలహాలు సాధారణ మార్గదర్శకాలు మాత్రమే; మీ స్థానిక వ్యవసాయ అధికారి/KVK సలహాకు ప్రత్యామ్నాయం కాదు.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

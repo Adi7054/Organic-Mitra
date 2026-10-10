@@ -6,32 +6,31 @@ farm diary, savings calculator and an AI chat assistant ("Mitra").
 
 ## Project structure
 
-```
-organicmitra/
-├── README.md
-├── package.json            # backend dependencies and scripts
-├── .env.example            # copy to .env and add your key
+
+```text
+OrganicMitra_Project/
+├── frontend/
+│   ├── index.html          # Dynamic UI with Farmer registration form & Gemini Assistant
+│   ├── manifest.webmanifest # PWA manifest
+│   ├── icon-192.png
+│   └── icon-512.png
+├── backend/
+│   ├── models/
+│   │   └── Farmer.js       # Mongoose Schema for Farmer data
+│   ├── server.js           # Express backend server with MongoDB integration & Gemini API
+│   ├── package.json
+│   ├── .env.example
+│   └── .gitignore
 ├── .gitignore
-├── frontend/               # what the farmer sees (static files)
-│   ├── index.html
-│   ├── css/styles.css
-│   └── js/
-│       ├── app.js          # UI, crop data, recipes, pests, diary, 3D scenes, chat
-│       └── api.js          # talks to the backend (/api/chat) and handles downloads
-├── backend/                # Node.js + Express server
-│   ├── server.js           # starts server, serves frontend, mounts API routes
-│   └── routes/
-│       ├── chat.js         # POST /api/chat  -> Anthropic API (chat + photo check)
-│       └── health.js       # GET  /api/health
-└── docs/
-    └── REQUIREMENTS.md     # what the project needs
+└── README.md
+
 ```
 
 ## Requirements
 
 - Node.js 18 or newer (https://nodejs.org)
-- An Anthropic API key (only for chat and photo check; the rest works without it)
-- A modern browser with WebGL (Chrome, Edge, Safari)
+-Node.js 18 or newer
+-MongoDB installed locally OR a MongoDB Atlas cloud Connection String
 
 See `docs/REQUIREMENTS.md` for the full list.
 

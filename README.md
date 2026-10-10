@@ -8,22 +8,26 @@ farm diary, savings calculator and an AI chat assistant ("Mitra").
 
 
 ```text
+``text
 OrganicMitra_Project/
-├── frontend/
-│   ├── index.html          # Dynamic UI with Farmer registration form & Gemini Assistant
-│   ├── manifest.webmanifest # PWA manifest
-│   ├── icon-192.png
-│   └── icon-512.png
-├── backend/
-│   ├── models/
-│   │   └── Farmer.js       # Mongoose Schema for Farmer data
-│   ├── server.js           # Express backend server with MongoDB integration & Gemini API
-│   ├── package.json
-│   ├── .env.example
-│   └── .gitignore
+├── OrganicMitra_Project/
+│   ├── backend/
+│   │   ├── models/
+│   │   │   └── Farmer.js       # Mongoose Schema for Farmer data
+│   │   ├── server.js           # Express backend server with MongoDB integration & Gemini API
+│   │   ├── package.json
+│   │   ├── .env
+│   │   └── .gitignore
+│   └── frontend/
+│       ├── index.html          # Dynamic UI with Farmer registration form & Gemini Assistant
+│       ├── manifest.webmanifest # PWA manifest
+│       ├── icon-192.png
+│       └── icon-512.png
+├── node_modules/
 ├── .gitignore
+├── package.json
+├── package-lock.json
 └── README.md
-
 ```
 
 ## Requirements
